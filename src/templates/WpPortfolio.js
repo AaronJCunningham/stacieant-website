@@ -3,19 +3,22 @@ import { graphql, Link as GatsbyLink } from "gatsby";
 import { Link, Container, Text, Heading } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
 
-const WpPosts = (query) => {
+const WpPortfolio = (query) => {
   console.log(query.data);
   return (
     <>
       <Helmet>
-        <meta name="description" content={query.data.wpPost.seo.metaDesc} />
+        <meta
+          name="description"
+          content={query.data.wpPortfolio.seo.metaDesc}
+        />
       </Helmet>
       <Container>
-        <Heading as="h1">{query.data.wpPost.title}</Heading>
+        <Heading as="h1">{query.data.wpPortfolio.title}</Heading>
         <Text>
           <div
             dangerouslySetInnerHTML={{
-              __html: query.data.wpPost.content,
+              __html: query.data.wpPortfolio.content,
             }}
           />
         </Text>
@@ -27,11 +30,11 @@ const WpPosts = (query) => {
   );
 };
 
-export default WpPosts;
+export default WpPortfolio;
 
 export const query = graphql`
-  query PostById($id: String) {
-    wpPost(id: { eq: $id }) {
+  query PortById($id: String) {
+    wpPortfolio(id: { eq: $id }) {
       title
       content
       seo {

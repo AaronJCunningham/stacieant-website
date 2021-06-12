@@ -7,6 +7,7 @@ exports.onPostBuild = ({ reporter }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const WpPostTemplate = path.resolve(`./src/templates/WpPosts.js`);
+  const WpPortfolioTemplate = path.resolve(`./src/templates/WpPortfolio.js`);
   const result = await graphql(`
     query {
       allWpPost {
@@ -17,17 +18,47 @@ exports.createPages = async ({ graphql, actions }) => {
           uri
         }
       }
+      allWpPortfolio {
+        nodes {
+          __typename
+          id
+          databaseId
+          uri
+        }
+      }
     }
   `);
 
-  const { allWpPost } = result.data;
+  // const portfolioResult = await graphql(`
+  //   query {
+  //     allWpPortfolio {
+  //       nodes {
+  //         __typename
+  //         id
+  //         databaseId
+  //         uri
+  //       }
+  //     }
+  //   }
+  // `);
+
+  const { allWpPost, allWpPortfolio } = result.data;
+  console.log(result.data);
 
   allWpPost.nodes.map((post) => {
-    console.log(post.uri);
     createPage({
       path: post.uri,
       component: WpPostTemplate,
       context: post,
+    });
+  });
+
+  allWpPortfolio.nodes.map((port) => {
+    console.log(allWpPortfolio);
+    createPage({
+      path: port.uri,
+      component: WpPortfolioTemplate,
+      context: port,
     });
   });
 };
