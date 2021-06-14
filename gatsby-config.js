@@ -10,7 +10,6 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         url: "http://stacieant.local/graphql",
-        ENABLE_GATSBY_REFRESH_ENDPOINT: true,
       },
     },
     {
