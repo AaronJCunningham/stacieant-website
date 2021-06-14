@@ -45,7 +45,7 @@ const HomePage = () => {
         ))}
       </Stack>
       <div>
-        <h1>Portfolio</h1>
+        <Heading as="h1">Portfolio</Heading>
       </div>
       <Stack spacing={8}>
         {allWpPortfolio.nodes.map(({ id, title, uri }) => (
