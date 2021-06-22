@@ -1,64 +1,51 @@
-import * as React from "react";
-import { useStaticQuery, graphql, Link as GatsbyLink } from "gatsby";
-import { Container, Stack, Heading, Box, Link } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { Container } from "@chakra-ui/react";
+
+import "../sass/style.scss";
+
+// import Header from "../components/Header";
+
+import Portfolio from "../components/Portfolio";
+import Bio from "../components/Bio";
+import News from "../components/News";
+import Contact from "../components/Contact";
+import Menu from "../components/Menu";
+import Cv from "../components/Cv";
+import Video from "../components/Video";
+import HeaderStacie from "../components/HeaderStacie";
 
 const HomePage = () => {
-  const data = useStaticQuery(graphql`
-    {
-      allWpPost {
-        nodes {
-          id
-          title
-          excerpt
-          uri
-        }
-      }
+  useEffect(() => {
+    window.onscroll = function () {
+      scrollFunction();
+    };
+  }, []);
 
-      allWpPortfolio {
-        nodes {
-          id
-          title
-          uri
-        }
-      }
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 300 ||
+      document.documentElement.scrollTop > 300
+    ) {
+      document.getElementById("navbar").style.top = "0";
+    } else {
+      document.getElementById("navbar").style.top = "-180px";
     }
-  `);
-
-  const { allWpPost, allWpPortfolio } = data;
+  }
 
   return (
-    <Container maxW="xl" centerContent>
-      <canvas>test</canvas>
-      <Stack spacing={8}>
-        {allWpPost.nodes.map(({ id, title, excerpt, uri }) => (
-          <Box key={id} p={5} shadow="md" borderWidth="1px">
-            <Heading as="h2">{title}</Heading>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: excerpt,
-              }}
-            ></div>
-            <Link as={GatsbyLink} to={uri}>
-              Read More{" "}
-            </Link>
-          </Box>
-        ))}
-      </Stack>
-      <div>
-        <Heading as="h1">Portfolio</Heading>
-      </div>
-      <Stack spacing={8}>
-        {allWpPortfolio.nodes.map(({ id, title, uri }) => (
-          <Box key={id} p={5} shadow="md" borderWidth="1px">
-            <Heading as="h2">{title}</Heading>
-
-            <Link as={GatsbyLink} to={`${uri}`}>
-              Read More{" "}
-            </Link>
-          </Box>
-        ))}
-      </Stack>
-    </Container>
+    <>
+      {/* <Header /> */}
+      <HeaderStacie />
+      <Menu />
+      <Container maxW="70rem" mb="150">
+        <Bio />
+        <Portfolio />
+        <Video />
+        <Cv />
+        <News />
+        <Contact />
+      </Container>
+    </>
   );
 };
 

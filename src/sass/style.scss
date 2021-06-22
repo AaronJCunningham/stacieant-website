@@ -1,0 +1,104 @@
+// VARIABLES
+$main-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+$color-light: rgb(248, 100, 228);
+
+// HEADER SCSS
+body {
+  font-family: $main-font;
+  margin: 0;
+  padding: 0;
+}
+
+#whosthereplease {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  background-color: $color-light;
+  h1 {
+    font-family: $main-font;
+    font-size: 12rem;
+    font-weight: 700;
+  }
+}
+
+#header_content {
+  position: absolute;
+  z-index: 1000;
+  bottom: 4rem;
+}
+
+#header_button {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: seashell;
+  border-color: seashell;
+  border-width: 1px;
+}
+
+#header_button:hover {
+  background-color: rgba(255, 255, 255, 0.76);
+}
+
+#loading {
+  font-size: 10rem;
+  color: aliceblue;
+}
+
+#link a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+}
+
+#navbar {
+  background-color: rgb(255, 255, 255);
+  z-index: 1001;
+  position: fixed;
+  top: -150px;
+  width: 100%;
+  display: block;
+  transition: top 0.3s;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 3px 10px 0 rgba(0, 0, 0, 0.05);
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#title {
+  font-weight: 700;
+  border: none;
+  border-bottom: 1px dotted black;
+}
+
+#cv a {
+  font-weight: 500;
+}
+
+li {
+  margin-left: 2rem;
+}
+
+#bio,
+#portfolio,
+#cv,
+#news,
+#contact {
+  padding-top: 1rem;
+}

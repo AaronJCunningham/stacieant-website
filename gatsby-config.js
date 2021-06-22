@@ -6,6 +6,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-sass`,
     {
       resolve: "gatsby-source-wordpress",
       options: {
